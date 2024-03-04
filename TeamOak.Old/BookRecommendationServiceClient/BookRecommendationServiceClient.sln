@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BRSClient", "BRSClient.App\BRSClient.csproj", "{D28F2932-5CB1-4E53-B5AE-36BF02B5B449}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BRS.Logic", "..\BookRecommendationService\BRS.Logic\BRS.Logic.csproj", "{7D7A7761-593D-4B94-B01F-1A461381DBF2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D28F2932-5CB1-4E53-B5AE-36BF02B5B449}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D28F2932-5CB1-4E53-B5AE-36BF02B5B449}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D28F2932-5CB1-4E53-B5AE-36BF02B5B449}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D28F2932-5CB1-4E53-B5AE-36BF02B5B449}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDEEAED9-0C99-471B-879F-B1328FA60517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDEEAED9-0C99-471B-879F-B1328FA60517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDEEAED9-0C99-471B-879F-B1328FA60517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDEEAED9-0C99-471B-879F-B1328FA60517}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D7A7761-593D-4B94-B01F-1A461381DBF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D7A7761-593D-4B94-B01F-1A461381DBF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D7A7761-593D-4B94-B01F-1A461381DBF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D7A7761-593D-4B94-B01F-1A461381DBF2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

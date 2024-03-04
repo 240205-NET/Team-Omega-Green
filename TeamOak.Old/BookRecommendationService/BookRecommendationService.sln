@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BRS.Logic", "BRS.Logic\BRS.Logic.csproj", "{5FAC1745-3F63-4A57-B1C2-A46EB55C4123}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BRS.Data", "BRS.Data\BRS.Data.csproj", "{01005A89-7FF0-49EC-A4EF-EBD2FF69EA70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BRS.API", "BRS.API\BRS.API.csproj", "{816209E1-6A37-40C6-92C6-CC86E6E044BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5FAC1745-3F63-4A57-B1C2-A46EB55C4123}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FAC1745-3F63-4A57-B1C2-A46EB55C4123}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FAC1745-3F63-4A57-B1C2-A46EB55C4123}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FAC1745-3F63-4A57-B1C2-A46EB55C4123}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01005A89-7FF0-49EC-A4EF-EBD2FF69EA70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01005A89-7FF0-49EC-A4EF-EBD2FF69EA70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01005A89-7FF0-49EC-A4EF-EBD2FF69EA70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01005A89-7FF0-49EC-A4EF-EBD2FF69EA70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{816209E1-6A37-40C6-92C6-CC86E6E044BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{816209E1-6A37-40C6-92C6-CC86E6E044BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{816209E1-6A37-40C6-92C6-CC86E6E044BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{816209E1-6A37-40C6-92C6-CC86E6E044BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
