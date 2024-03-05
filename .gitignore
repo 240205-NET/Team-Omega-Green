@@ -30,6 +30,7 @@ Lit.Server/Lit.Server.Data/obj/
 Lit.Client/Lit.Client.App/.vscode/
 Lit.Server/Lit.Server.Api/bin/
 Lit.Server/Lit.Server.Data/bin/
+Lit.Client/.settings/
 Lit.Server/.vs/
 Lit.Client/.vs/
 ###################
