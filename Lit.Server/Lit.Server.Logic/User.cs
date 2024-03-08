@@ -4,13 +4,17 @@ namespace Lit.Server.Logic
 {
 	public class User
 	{
-		public string userId { set; get; }
-		public string username { set; get; } // unique
-		public string email { set; get; } // unique?
-		public int location { set; get; }
-		public string firstName { set; get; }
-		public string lastName { set; get; }
-		public string password { set; get; }
-		// TODO
+		[Key]
+		public int UserId { get; set; }
+		public string Username { get; set; } // Ensure uniqueness via Fluent API
+		public string Email { get; set; } // Ensure uniqueness via Fluent API
+		public string Location { get; set; } // Changed type to string assuming it's a location name. Use a complex type or related entity for detailed addresses.
+		public string FirstName { get; set; }
+		public string LastName { get; set; }
+		public string Password { get; set; }
+
+		// Navigation properties if needed
+		public List<Review> Reviews { get; set; } = new List<Review>();
+		public Cart Cart { get; set; }
 	}
 }

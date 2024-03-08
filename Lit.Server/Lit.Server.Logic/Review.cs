@@ -4,11 +4,15 @@ namespace Lit.Server.Logic
 {
 	public class Review
 	{
-		public int rating { set; get; }
-		public string body { set; get; }
-		public int userId { get; set; }
-		public User user { get; set; } // ? 
-		public int bookId { get; set; }
-		public Book book { get; set; } // ?
+		[Key]
+		public int ReviewId { set; get; }
+		public int Tating { set; get; }
+		public string Body { set; get; }
+		[ForeignKey("User")]
+		public int UserId { get; set; }
+		public User User { get; set; }
+		[ForeignKey("Book")]
+		public int BookId { get; set; }
+		public Book Book { get; set; }
 	}
 }

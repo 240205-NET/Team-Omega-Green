@@ -4,8 +4,11 @@ namespace Lit.Server.Logic
 {
 	public class Cart
 	{
-		List<Book> books { set; get; }
-		public int userId { set; get; }
-		public User user { set; get; } // ?
+		[Key]
+		public int CartId { get; set; }
+		[ForeignKey("User")]
+		public int UserId { get; set; }
+		public User User { get; set; }
+		public List<Book> Books { get; set; } = new List<Book>();
 	}
 }
