@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { HomeComponent } from './home/home.component';
 import { BooklistComponent } from './booklist/booklist.component';
+import { BookDetailComponent } from './book-detail/book-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'booklist',
     component: BooklistComponent
+  },
+  {
+    path: 'book-detail/:id',
+    component: BookDetailComponent
   }
 ];
 
