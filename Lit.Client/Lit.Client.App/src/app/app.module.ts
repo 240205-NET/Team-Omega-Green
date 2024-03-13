@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LandingComponent } from './landing/landing.component';
 import { HomeComponent } from './home/home.component';
+import { LandingComponent } from './landing/landing.component';
+import { HomeComponent } from './home/home.component';
 import { BookDetailComponent } from './book-detail/book-detail.component'
 
 
@@ -15,11 +17,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    LandingComponent,
-    HomeComponent,
-    BookDetailComponent,
-    
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
