@@ -13,7 +13,7 @@ namespace Lit.Server.Logic
 		public int UserId { get; set; }
 		public User User { get; set; }
 		[ForeignKey("Book")]
-		public int BookId { get; set; }
+		public string BookId { get; set; }
 		public Book Book { get; set; }
 	}
 }
