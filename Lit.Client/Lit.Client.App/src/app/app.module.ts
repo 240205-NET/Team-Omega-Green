@@ -3,7 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from 'src/app/navbar/navbar.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { LandingComponent } from './landing/landing.component';
+import { HomeComponent } from './home/home.component';
 import { BookDetailComponent } from './book-detail/book-detail.component'
 
 
@@ -13,7 +15,9 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    LandingComponent,
+    HomeComponent,
     BookDetailComponent,
     
   ],
