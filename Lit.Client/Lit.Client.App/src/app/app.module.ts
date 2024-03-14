@@ -7,6 +7,7 @@ import { NavbarComponent } from 'src/app/navbar/navbar.component';
 import { LandingComponent } from './landing/landing.component';
 import { HomeComponent } from './home/home.component';
 import { BooklistComponent } from './booklist/booklist.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { BooklistComponent } from './booklist/booklist.component';
     NavbarComponent,
     LandingComponent,
     HomeComponent,
-    BooklistComponent
+    BooklistComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
