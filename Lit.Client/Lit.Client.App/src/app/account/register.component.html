@@ -1,1 +1,30 @@
-<p>register works!</p>
+<div>
+  <h1>Register</h1>
+  <div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div>
+        <label>First Name: </label>
+        <input type="text" formControlName="firstName"/>
+      </div>
+      <div>
+        <label>Last Name: </label>
+        <input type="text" formControlName="lastName"/>
+      </div>
+      <div>
+        <label>UserName: </label>
+        <input type="text" formControlName="username"/>
+      </div>
+      <div>
+        <label>Password: </label>
+        <input type="password" formControlName="password">
+      </div>
+      <div>
+        <button [disabled]="loading">
+          <span *ngIf="loading"></span>
+          Register
+        </button>
+        <a routerLink="../login">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
