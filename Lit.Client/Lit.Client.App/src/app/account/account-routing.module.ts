@@ -6,6 +6,9 @@ import { LoginComponent } from './login.component';
 import { RegisterComponent} from './register.component';
 import { LayoutComponent } from "./layout.component";
 
+/**
+ * create route to layoutcomponent and then display either login or register based on choice
+ */
 const routes : Routes = [
   {
     path : '',
@@ -18,7 +21,9 @@ const routes : Routes = [
 ];
 
 
-
+/**
+ * account module imports the child routes and lets app routes use the built child routes
+ */
 @NgModule({
   declarations: [],
   imports: [
