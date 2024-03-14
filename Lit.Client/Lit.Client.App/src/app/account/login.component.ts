@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { first } from 'rxjs/operators';
 
+import {AccountService} from "../_services/account.service";
+
 @Component({
   templateUrl: './login.component.html',
 })
@@ -14,7 +16,8 @@ export class LoginComponent {
   constructor(
     private formBuilder : FormBuilder,
     private route : ActivatedRoute,
-    private router : Router
+    private router : Router,
+    private accountService : AccountService
   ) { }
 
   ngOnInit() {

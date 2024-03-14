@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AccountService } from '@app/_services';
+import { AccountService } from '../_services/account.service';
 
 @Component({
-  selector: 'app-layout',
-  standalone: true,
-  imports: [],
-  templateUrl: './layout.component.html',
-  styleUrl: './layout.component.css'
+  templateUrl: './layout.component.html'
 })
 export class LayoutComponent {
 
@@ -16,6 +12,8 @@ export class LayoutComponent {
     private router : Router,
     private accountService : AccountService
   ) {
-
+    if(this.accountService.getCurrentUser()) {
+      this.router.navigate(['/']);
+    }
   }
 }

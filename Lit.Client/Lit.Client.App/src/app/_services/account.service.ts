@@ -31,6 +31,9 @@ export class AccountService {
 
   }
 
+  getCurrentUser() {
+    return this.userSubject.value;
+  }
   getAllUsers() {
 
   }
