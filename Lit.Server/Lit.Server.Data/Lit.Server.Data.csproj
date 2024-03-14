@@ -20,10 +20,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Lit.Server.Logic\Lit.Server.Logic.csproj" />
   </ItemGroup>
-<!-- 
+
 <ItemGroup>
   <None Update="appsettings.json">
     <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
   </None>
-</ItemGroup> -->
+</ItemGroup>
 </Project>
