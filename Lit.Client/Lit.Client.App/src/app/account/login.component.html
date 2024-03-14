@@ -1,0 +1,24 @@
+<div>
+  <h1>Login</h1>
+  <div>
+    <!-- pass in form to form variable and end on onsubmiy
+      still have to print error messages with validators-->
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div>
+        <label>UserName: </label>
+        <input type="text" formControlName="username"/>
+      </div>
+      <div>
+        <label>Password: </label>
+        <input type="password" formControlName="password">
+      </div>
+      <div>
+        <button [disabled]="loading">
+          <span *ngIf="loading"></span>
+          Login
+        </button>
+        <a routerLink="../register">Register</a>
+      </div>
+    </form>
+  </div>
+</div>
