@@ -5,6 +5,10 @@ import { LandingComponent } from './landing/landing.component';
 import { HomeComponent } from './home/home.component';
 import { BooklistComponent } from './booklist/booklist.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
+import { LayoutComponent } from './account/layout.component';
+import { AccountModule } from './account/account.module';
+
+const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -23,6 +27,10 @@ const routes: Routes = [
   {
     path: 'book-detail/:id',
     component: BookDetailComponent
+  },
+  {
+    path: 'account',
+    loadChildren: accountModule
   }
 ];
 
