@@ -17,9 +17,7 @@ import { LayoutComponent } from './account/layout.component';
     NavbarComponent,
     LandingComponent,
     HomeComponent,
-    BooklistComponent,
-    RegisterComponent,
-    LayoutComponent
+    BooklistComponent
   ],
   imports: [
     BrowserModule,

@@ -21,14 +21,16 @@ export class NavbarComponent {
     }
   }
 
-  navigateToAccount() {
-    this.router.navigate(['account']);
+  navigateToLogin() {
+    this.router.navigate(['account/login']);
 
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => {
-      this.router.navigate(['login'], { relativeTo: this.route });
-    });
+    
+  }
+
+  navigateToRegister() {
+    this.router.navigate(['account/register']);
+
+    
   }
 
   navigateToHome() {
