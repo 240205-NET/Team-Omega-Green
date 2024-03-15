@@ -9,7 +9,6 @@ namespace Lit.Server.Logic
 		public int UserId { get; set; }
 		public string Username { get; set; } // Ensure uniqueness via Fluent API
 		public string Email { get; set; } // Ensure uniqueness via Fluent API
-		public string Location { get; set; } // Changed type to string assuming it's a location name. Use a complex type or related entity for detailed addresses.
 		public string FirstName { get; set; }
 		public string LastName { get; set; }
 		public string Password { get; set; }

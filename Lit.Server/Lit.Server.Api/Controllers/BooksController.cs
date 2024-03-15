@@ -10,9 +10,8 @@ public class BooksController : ControllerBase
 {
 	private readonly ApplicationContext _context;
 	private readonly IConfiguration _configuration;
-
-
 	private readonly ILogger<BooksController> _logger;
+
 	public BooksController(ILogger<BooksController> logger, ApplicationContext context, IConfiguration configuration)
 	{
 		_logger = logger;
