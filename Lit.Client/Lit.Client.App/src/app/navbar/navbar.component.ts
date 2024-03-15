@@ -10,7 +10,7 @@ import { AccountService } from '../_services/account.service';
 })
 export class NavbarComponent {
 
-  constructor(private router: Router, private route: ActivatedRoute, private accntSrvice: AccountService) {}
+  constructor(public router: Router, private route: ActivatedRoute, private accntSrvice: AccountService) {}
 
   hasUser() {
     if(this.accntSrvice.getCurrentUser()) {

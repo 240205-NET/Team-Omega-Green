@@ -10,6 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { BooklistComponent } from './booklist/booklist.component';
 import { RegisterComponent } from './account/register.component';
 import { LayoutComponent } from './account/layout.component';
+import { SearchboxComponent } from './searchbox/searchbox.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { LayoutComponent } from './account/layout.component';
     NavbarComponent,
     LandingComponent,
     HomeComponent,
-    BooklistComponent
+    BooklistComponent,
+    SearchboxComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,
