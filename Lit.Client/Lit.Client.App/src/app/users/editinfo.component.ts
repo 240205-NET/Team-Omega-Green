@@ -5,8 +5,7 @@ import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-editinfo',
-  templateUrl: './editinfo.component.html',
-  styleUrls: ['./editinfo.component.css']
+  templateUrl: './editinfo.component.html'
 })
 export class EditInfoComponent {
   form! : FormGroup;
@@ -16,6 +15,13 @@ export class EditInfoComponent {
     this.router.navigate([':id']);
 
     
+  }
+
+  OnSubmit() {
+    if(this.form.invalid) {
+      return;
+    }
+
   }
   
 }
