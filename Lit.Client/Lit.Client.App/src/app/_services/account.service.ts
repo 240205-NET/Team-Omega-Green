@@ -9,8 +9,8 @@ import { User } from '../_models/user.model';
 })
 export class AccountService {
 
-  private userSubject : BehaviorSubject<User | null>
-  private user : Observable<User | null>
+  public userSubject : BehaviorSubject<User | null>
+  public user : Observable<User | null>
 
   constructor(
     private router : Router
