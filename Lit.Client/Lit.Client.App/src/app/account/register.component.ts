@@ -30,22 +30,22 @@ export class RegisterComponent {
     })
   }
 
-  onSubmit() {
-    this.submitted = true;
+  // onSubmit() {
+  //   this.submitted = true;
 
-    if(this.form.invalid) {
-      return;
-    }
+  //   if(this.form.invalid) {
+  //     return;
+  //   }
 
-    this.loading = true;
+  //   this.loading = true;
 
-    this.accountService.register(this.form.value).pipe(first()).subscribe({
-      next : () => {
-        this.router.navigate(['../login'], {relativeTo: this.route});
-      },
-      error : error => {
-        this.loading = false;
-      }
-    })
-  }
+  //   this.accountService.register(this.form.value).pipe(first()).subscribe({
+  //     next : () => {
+  //       this.router.navigate(['../login'], {relativeTo: this.route});
+  //     },
+  //     error : error => {
+  //       this.loading = false;
+  //     }
+  //   })
+  // }
 }
