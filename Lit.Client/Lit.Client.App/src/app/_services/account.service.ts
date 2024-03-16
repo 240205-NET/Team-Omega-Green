@@ -64,7 +64,7 @@ export class AccountService {
     .then((response) => {
       // Response handling may change after testing with mock data and/or database
       console.log(response);
-      return response.statusText;
+      return response.status;
     }, (error) => {
       console.log(error);
     });
@@ -107,7 +107,7 @@ export class AccountService {
     .then((response) => {
       // Response handling may change after testing with mock data and/or database
       console.log(response);
-      return response.statusText;
+      return response.status;
     }, (error) => {
       console.log(error);
     });
@@ -122,7 +122,7 @@ export class AccountService {
     .then((response) => {
       // Response handling may change after testing with mock data and/or database
       console.log(response);
-      return response.statusText;
+      return response.status;
     }, (error) => {
       console.log(error);
     })
