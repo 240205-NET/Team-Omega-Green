@@ -7,6 +7,7 @@ import { BooklistComponent } from './booklist/booklist.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { LayoutComponent } from './account/layout.component';
 import { AccountModule } from './account/account.module';
+import { SearchResultsComponent } from './search-results/search-results.component';
 import { UsersModule } from './users/users.module';
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
@@ -31,6 +32,9 @@ const routes: Routes = [
     path: 'book-detail/:id',
     component: BookDetailComponent
   },
+  { 
+    path: 'search-results/:query',
+    component: SearchResultsComponent },
   {
     path: 'account',
     loadChildren: accountModule
