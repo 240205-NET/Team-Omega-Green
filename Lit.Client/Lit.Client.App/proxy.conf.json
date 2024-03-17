@@ -1,0 +1,7 @@
+{
+    "/api": {
+      "target": "https://omega-green.azurewebsites.net",
+      "secure": false,
+      "changeOrigin": true
+    }
+  }
