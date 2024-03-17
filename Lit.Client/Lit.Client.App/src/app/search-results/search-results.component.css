@@ -1,0 +1,26 @@
+#resultsTable{
+    width:95%;
+    border: 0px solid black;
+    padding: 1%;
+    display:block;
+    margin: auto;
+
+}
+.heading{
+    padding:10px;
+
+}
+
+.resultsCell{
+    width: 100vw; 
+    border: 0px solid black; 
+    padding: 1%;
+
+
+}
+
+.resultsCell:hover{
+    background-color: beige;
+
+
+}

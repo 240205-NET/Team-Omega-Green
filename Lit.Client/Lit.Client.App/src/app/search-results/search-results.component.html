@@ -1,4 +1,24 @@
 <header>
     <app-navbar></app-navbar>
 </header>
-<p>Showing results for: {{ searchQuery }}</p>
+<div class="heading"><p>Showing results for: {{ searchQuery }}</p></div>
+
+<hr>
+<div *ngIf="filteredBooks.length > 0; else noResults">
+    <table id="resultsTable">
+        <tbody>
+            <tr *ngFor="let book of filteredBooks" style="width: 100vw">
+                <td class="resultsCell" (click)="goToBookDetail(book.isbn)">
+                    <h2>{{ book.title }}</h2>
+                    <p>Author: {{ book.author }}</p>
+                    <p>ISBN: {{ book.isbn }}</p>
+                    <hr>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<ng-template #noResults>
+   <div class="heading"> <p>No results :(</p></div>
+</ng-template>
+

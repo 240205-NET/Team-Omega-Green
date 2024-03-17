@@ -16,7 +16,7 @@ import { SearchResultsComponent } from './search-results/search-results.componen
 
 import { ListUserComponent } from './users/listuser.component';
 import { NavbarModule } from './navbar/navbar.module';
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -34,7 +34,8 @@ import { NavbarModule } from './navbar/navbar.module';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    NavbarModule
+    NavbarModule,
+    HttpClientModule
   ],
   // exports:[NavbarModule],
   providers: [],
