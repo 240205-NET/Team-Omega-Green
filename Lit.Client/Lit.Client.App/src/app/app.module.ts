@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import axios from 'axios';
 import { RouterModule } from '@angular/router';
+
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from 'src/app/navbar/navbar.component';
@@ -13,22 +15,30 @@ import { LayoutComponent } from './account/layout.component';
 import { SearchboxComponent } from './searchbox/searchbox.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 
+import { ListUserComponent } from './users/listuser.component';
+import { NavbarModule } from './navbar/navbar.module';
+
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     LandingComponent,
     HomeComponent,
     BooklistComponent,
     SearchboxComponent,
     SearchResultsComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    NavbarModule
   ],
-  exports:[NavbarComponent],
+  // exports:[NavbarModule],
   providers: [],
   bootstrap: [AppComponent]
 })
