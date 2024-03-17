@@ -6,7 +6,7 @@ import { AccountService } from '../_services/account.service';
 import { SearchboxComponent } from '../searchbox/searchbox.component';
 
 @NgModule({
-  declarations: [NavbarComponent,SearchboxComponent]
+  declarations: [NavbarComponent,SearchboxComponent],
   imports: [
     CommonModule,
   ],
