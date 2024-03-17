@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar.component';
-import { AccountService } from '../_services/account.service';
+
 
 
 
@@ -9,7 +9,6 @@ import { AccountService } from '../_services/account.service';
   declarations: [NavbarComponent],
   imports: [
     CommonModule,
-    AccountService
   ],
   exports: [
      NavbarComponent
