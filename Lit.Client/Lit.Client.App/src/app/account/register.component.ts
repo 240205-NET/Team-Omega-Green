@@ -39,13 +39,13 @@ export class RegisterComponent {
 
     this.loading = true;
 
-    this.accountService.register(this.form.value).pipe(first()).subscribe({
-      next : () => {
-        this.router.navigate(['../login'], {relativeTo: this.route});
-      },
-      error : error => {
-        this.loading = false;
-      }
-    })
+    // this.accountService.register(this.form.value).pipe(first()).subscribe({
+    //   next : () => {
+    //     this.router.navigate(['../login'], {relativeTo: this.route});
+    //   },
+    //   error : error => {
+    //     this.loading = false;
+    //   }
+    // })
   }
 }
