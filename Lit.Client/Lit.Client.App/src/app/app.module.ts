@@ -11,8 +11,7 @@ import { LandingComponent } from './landing/landing.component';
 import { HomeComponent } from './home/home.component';
 import { BooklistComponent } from './booklist/booklist.component';
 import { RegisterComponent } from './account/register.component';
-import { LayoutComponent } from './account/layout.component';
-import { SearchboxComponent } from './searchbox/searchbox.component';
+
 import { SearchResultsComponent } from './search-results/search-results.component';
 
 import { ListUserComponent } from './users/listuser.component';
@@ -28,7 +27,6 @@ import { NavbarModule } from './navbar/navbar.module';
     LandingComponent,
     HomeComponent,
     BooklistComponent,
-    SearchboxComponent,
     SearchResultsComponent
 
   ],
