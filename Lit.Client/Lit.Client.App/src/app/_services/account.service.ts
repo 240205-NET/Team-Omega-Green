@@ -10,18 +10,16 @@ import { User } from '../_models/user.model';
 })
 export class AccountService {
 
-
-  public userSubject : BehaviorSubject<User | null>
-  public user : Observable<User | null>
-  public loginUrl : string
-
+  private userSubject : BehaviorSubject<User | null>
+  private user : Observable<User | null>
+  private loginUrl : string
 
   constructor(
     private router : Router
   ) {
     this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));
     this.user = this.userSubject.asObservable();
-    this.loginUrl = 'https://omega-green.azurewebsites.net';
+    this.loginUrl = 'https://omega-green.azurewebsites.net/api';
   }
 
   login(userName : string, passWord : string) {
@@ -51,12 +49,18 @@ export class AccountService {
   }
 
   logout() {
-    // Not sure exactly how we want to handle this
-  }
+    // Call the logout endpoint on the server if you have one (optional)
+    fetch('/api/auth/logout', { method: 'POST' })
+        .then(() => {
+            // Clear the token from local storage, cookies, or wherever it's stored
+            localStorage.removeItem('token');
+            // Redirect the user to the login page or home page as necessary
+            window.location.href = '/login';
+        });
+}
 
   register(user : User) {
     axios.post(this.loginUrl + '/user', {
-      id: user.id,
       username: user.username,
       password: user.password,
       firstName: user.firstName,
