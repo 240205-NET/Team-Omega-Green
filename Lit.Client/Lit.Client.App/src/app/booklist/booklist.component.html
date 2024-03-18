@@ -22,11 +22,11 @@
       <th>Book details</th>
     </thead>
     <tbody>
-      <tr class="records">
-        <th>The name of the wind</th>
-        <th>Peter Rothfuss</th>
-        <th>2000s</th>
-        <th>amazing book</th>
+      <tr class="records" *ngFor="let book of books">
+        <th>{{book.title}}</th>
+        <th>{{book.author}}</th>
+        <th>{{book.isbn}}</th>
+        <th>{{book.categoryName}}</th>
     </tr>
     </tbody>
   </table>

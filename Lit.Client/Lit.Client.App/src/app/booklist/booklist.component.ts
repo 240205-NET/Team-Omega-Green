@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
+import { BookService } from '../_services/book.service';
+import { Book } from '../_models/book.model';
 
 @Component({
   selector: 'app-booklist',
@@ -8,9 +10,14 @@ import axios from 'axios';
   templateUrl: './booklist.component.html',
   styleUrls: ['./booklist.component.css']
 })
-export class BooklistComponent {
-  
-  constructor ()  {  }
+export class BooklistComponent implements OnInit
+{
+  books? : Book[];
+  constructor (private bookservice: BookService)  {  }
+
+  async ngOnInit(): Promise<void> {
+    this.books = await this.bookservice.getAllBooksAsync()
+  }
 
 }
 

@@ -73,7 +73,8 @@ export class LoginComponent {
      * uses subscribe to send this id to the activated route to either go to userhomepage or go back home
      *
      */
-    // this.accountService.login(this.form.controls.username.value, this.form.controls.password.value).pipe(first()).subscribe({
+    this.accountService.login(this.form.controls['username'].value, this.form.controls['password'].value);
+    // this.accountService.login(this.form.controls['username'].value, this.form.controls['password'].value).pipe(first()).subscribe({
     //   next : () => {
     //     this.router.navigateByUrl(this.route.snapshot.queryParams['returnUrl'] || '/');
     //   },

@@ -19,38 +19,66 @@ export class BookService {
     this.bookUrl = 'https://omega-green.azurewebsites.net/api';
   }
 
-  async getAllBooksAsync () {
+  async getAllBooksAsync() : Promise<Book[]> {
     try {
-      const response = await axios.get(this.bookUrl + '/books');
+      let options = {
+        method: 'GET',
+        url: this.bookUrl + '/books',
+        mode: 'no-cors',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json;charset=UTF-8'
+        }        
+      };
+      const response = await axios(options);
       console.log(response);
-      return response.data as Book[];
+      return await response.data as Book[];
     }
     catch (error) {
       console.log(error);
-      return false;
+      return [] as Book[];
     }
   }
 
-  async getBookByIdAsync (id : string) {
+  async getBookByIdAsync (id : string) : Promise<Book> {
     try {
-      const response = await axios.get(this.bookUrl + `/books/${id}`);
+      let options = {
+        method: 'GET',
+        url: this.bookUrl + `/books/${id}`,
+        mode: 'no-cors',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json;charset=UTF-8'
+        }
+      }
+      const response = await axios(options);
       console.log(response);
-      return response.data as Book;
+      return await response.data as Book;
     }
     catch (error) {
       console.log(error);
-      return false;
+      return new Book;
     }
   }
 
   async createBookAsync (book : Book) {
     try {
-      const response = await axios.post(this.bookUrl + '/books', {
-        title: book.title,
-        author: book.author,
-        isbn: book.isbn,
-        categoryId: book.categoryId
-      })
+      let options = {
+        method: 'POST',
+        url: this.bookUrl + '/books',
+        mode: 'no-cors',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json;charset=UTF-8'
+        },
+        data: {
+          title: book.title,
+          author: book.author,
+          isbn: book.isbn,
+          categoryId: book.categoryId
+        }
+      }
+      const response = await axios(options);
       console.log(response);
       return response.status;
     }
@@ -62,12 +90,22 @@ export class BookService {
 
   async updateBookByIdAsync (id : string, params : any) {
     try {
-      const response = await axios.put(this.bookUrl + `/books/${id}`, {
-        title: params.title,
-        author: params.author,
-        isbn: params.isbn,
-        categoryId: params.categoryId
-      })
+      let options = {
+        method: 'PUT',
+        url: this.bookUrl + `/books/${id}`,
+        mode: 'no-cors',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json;charset=UTF-8'
+        },
+        data: {
+          title: params.title,
+          author: params.author,
+          isbn: params.isbn,
+          categoryId: params.categoryId
+        }
+      }
+      const response = await axios(options);
       console.log(response);
       return response.status;
     }
@@ -79,11 +117,19 @@ export class BookService {
 
   async deleteBookByAsync (id : string) {
     try {
-      const response = await axios.delete(this.bookUrl + `/books/${id}`, {
+      let options = {
+        method: 'DELETE',
+        url: this.bookUrl + `/books/${id}`,
+        mode: 'no-cors',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json;charset=UTF-8'
+        },
         data: {
           id: id
         }
-      })
+      }
+      const response = await axios(options);
       console.log(response);
       return response.status;
     }
@@ -95,15 +141,15 @@ export class BookService {
 
 }
 
-getAllBooks() {
+// getAllBooks() {
 
-}
+// }
 
-getBookById(isbn : string) {
+// getBookById(isbn : string) {
 
-}
+// }
 
-getReviewById(id : string) {
+// getReviewById(id : string) {
 
-}
+// }
 

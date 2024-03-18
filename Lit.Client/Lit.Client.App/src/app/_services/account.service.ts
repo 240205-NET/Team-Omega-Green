@@ -10,8 +10,8 @@ import { User } from '../_models/user.model';
 })
 export class AccountService {
 
-  private userSubject : BehaviorSubject<User | null>
-  private user : Observable<User | null>
+  public userSubject : BehaviorSubject<User | null>
+  public user : Observable<User | null>
   private loginUrl : string
 
   constructor(
@@ -19,7 +19,7 @@ export class AccountService {
   ) {
     this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));
     this.user = this.userSubject.asObservable();
-    this.loginUrl = 'https://omega-green.azurewebsites.net/api';
+    this.loginUrl = 'https://omega-green.azurewebsites.net/api/auth';
   }
 
   login(userName : string, passWord : string) {
@@ -29,20 +29,23 @@ export class AccountService {
     })
     .then ((response) => {
       // Not sure if this works until I can get to testing
-      /*
-      this.user = response.data.map(item => {
-        id: item.Id,
-        username: item.username,
-        password: item.password,
-        firstName: item.FirstName,
-        lastName: item.LastName,
-        token: item.Token
-      });
-      */
+      
+      // this.user = response.data.map(item  => {
+      //   id: item.Id,
+      //   username: item.username,
+      //   password: item.password,
+      //   firstName: item.FirstName,
+      //   lastName: item.LastName,
+      //   token: item.Token
+      // });
+      
       this.user = response.data;
+      localStorage.setItem('user', JSON.stringify(this.user));
+      this.userSubject.next(this.user as User);
+      return this.user;
       // Response handling may change after testing with mock data and/or database
-      console.log(response);      
-      return response.data as User;
+      // console.log(response);      
+      // return response.data as User;
     }, (error) => {
       console.log(error);
     });
