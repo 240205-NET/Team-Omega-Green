@@ -1,12 +1,24 @@
+.BG{
+    background-color: antiquewhite;
+}
+.tableDiv{
+    background-color: antiquewhite;
+}
 .table{
     background-color: yellowgreen;
-    display:fles;
-    margin: 100pt;
+    margin: 50pt;
     width: fit-content;
 }
 .records{
-    background-color: rgb(255, 255, 255);
+    background-color: yellowgreen;
 }
 .TD{
     width:750pt;
+}
+.title1{
+    margin-left: 250pt;
+    margin-top: 100pt;
+}
+.mainContent{
+    display: flexbox;
 }
