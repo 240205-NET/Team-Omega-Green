@@ -61,6 +61,27 @@ export class BookService {
     }
   }
 
+  async getBookByIsbnAsync (isbn : string) : Promise<Book> {
+    try {
+      let options = {
+        method: 'GET',
+        url: this.bookUrl + `/books/${isbn}`,
+        mode: 'no-corse',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json;charset=UTF-8'
+        }
+      }
+      const response = await axios(options);
+      console.log(response);
+      return await response.data as Book;
+    }
+    catch (error) {
+      console.log(error);
+      return new Book;
+    }
+  }
+
   async createBookAsync (book : Book) {
     try {
       let options = {
