@@ -19,15 +19,25 @@ export class BookService {
     this.bookUrl = 'https://omega-green.azurewebsites.net/api';
   }
 
-  async getAllBooksAsync () {
+  async getAllBooksAsync() : Promise<Book[]> {
     try {
-      const response = await axios.get(this.bookUrl + '/books');
+      let options = {
+        method: 'GET',
+        url: this.bookUrl + '/books',
+        mode: 'no-cors',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json;charset=UTF-8'
+        },
+        
+    };
+      const response = await axios(options);
       console.log(response);
-      return response.data as Book[];
+      return await response.data as Book[];
     }
     catch (error) {
       console.log(error);
-      return false;
+      return [] as Book[];
     }
   }
 
@@ -95,15 +105,15 @@ export class BookService {
 
 }
 
-getAllBooks() {
+// getAllBooks() {
 
-}
+// }
 
-getBookById(isbn : string) {
+// getBookById(isbn : string) {
 
-}
+// }
 
-getReviewById(id : string) {
+// getReviewById(id : string) {
 
-}
+// }
 
