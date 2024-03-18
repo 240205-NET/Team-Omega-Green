@@ -6,10 +6,11 @@ name: Build and deploy ASP.Net Core app to Azure Web App - omega-green
 on:
   push:
     branches:
-      - feat-models
+      - feat-models # temporary until we've merged into main
+      # TODO - main
   workflow_dispatch:
 env:
-  WORKING_DIR: Lit.Server/Lit.Server.Api
+  WORKING_DIR: Lit.Server/Lit.Server.Api # where our ASP.NET app lives
 jobs:
   build:
     runs-on: windows-latest
