@@ -2,17 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using Lit.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Lit.Server.Logic;
+using Lit.Server.Api;
 
-public class UserDTO
-{
-	public int UserId { get; set; }
-	public string Username { get; set; } // Ensure uniqueness via Fluent API
-	public string Password { get; set; } // Ensure uniqueness via Fluent API
-	public string Email { get; set; } // Ensure uniqueness via Fluent API
-	public string FirstName { get; set; }
-	public string LastName { get; set; }
 
-}
 
 [Route("api/[controller]")]
 [ApiController]
@@ -31,11 +23,11 @@ public class UsersController : ControllerBase
 
 	// GET: api/users
 	[HttpGet]
-	public async Task<ActionResult<IEnumerable<UserDTO>>> GetAllUsers()
+	public async Task<ActionResult<IEnumerable<UserDto>>> GetAllUsers()
 	{
 		var users = await _context.Users
 			.Include(user => user.Cart)
-			.Select(user => new UserDTO
+			.Select(user => new UserDto
 			{
 				UserId = user.UserId,
 				Username = user.Username,
@@ -50,11 +42,11 @@ public class UsersController : ControllerBase
 
 	// GET: api/users/1
 	[HttpGet("{UserId}")]
-	public async Task<ActionResult<UserDTO>> GetUserById(int UserId)
+	public async Task<ActionResult<UserDto>> GetUserById(int UserId)
 	{
 		var user = await _context.Users
 			.Include(user => user.Cart)
-			.Select(user => new UserDTO
+			.Select(user => new UserDto
 			{
 				UserId = user.UserId,
 				Username = user.Username,
@@ -72,28 +64,9 @@ public class UsersController : ControllerBase
 		return user;
 	}
 
-	// POST: api/users
-	[HttpPost]
-	public async Task<ActionResult<User>> CreateUser(UserDTO userDto)
-	{
-		User user = new User
-		{
-			Username = userDto.Username,
-			Password = userDto.Password,
-			Email = userDto.Email,
-			FirstName = userDto.FirstName,
-			LastName = userDto.LastName,
-			// Since Category is a navigation property, EF will handle it based on the CategoryId
-		};
-
-		_context.Users.Add(user);
-		await _context.SaveChangesAsync();
-
-		return CreatedAtAction(nameof(GetUserById), new { UserId = user.UserId }, user);
-	}
 
 	[HttpPut("{UserId}")]
-	public async Task<IActionResult> EditUser(int UserId, [FromBody] UserDTO userDto)
+	public async Task<IActionResult> EditUser(int UserId, [FromBody] UserDto userDto)
 	{
 		if (!ModelState.IsValid)
 		{

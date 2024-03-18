@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Lit.Server.Data;
+using Lit.Server.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddCors();
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 var app = builder.Build();
 
