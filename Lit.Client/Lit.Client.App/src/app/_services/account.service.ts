@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from "rxjs";
 import axios from 'axios';
+import { HttpClient } from '@angular/common/http';
 
 import { User } from '../_models/user.model';
 
@@ -15,40 +16,63 @@ export class AccountService {
   private loginUrl : string
 
   constructor(
-    private router : Router
+    private router : Router, private http : HttpClient
   ) {
     this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));
     this.user = this.userSubject.asObservable();
     this.loginUrl = 'https://omega-green.azurewebsites.net/api/auth';
   }
 
-  login(userName : string, passWord : string) {
-    axios.post(this.loginUrl + '/login', {
-      username: userName,
-      password: passWord
-    })
-    .then ((response) => {
-      // Not sure if this works until I can get to testing
+  async login(userName : string, passWord : string) {
+    // axios.post(this.loginUrl + '/login', {
+    //   username: userName,
+    //   password: passWord
+    // })
+    // .then ((response) => {
+    //   // Not sure if this works until I can get to testing
       
-      // this.user = response.data.map(item  => {
-      //   id: item.Id,
-      //   username: item.username,
-      //   password: item.password,
-      //   firstName: item.FirstName,
-      //   lastName: item.LastName,
-      //   token: item.Token
-      // });
+    //   // this.user = response.data.map(item  => {
+    //   //   id: item.Id,
+    //   //   username: item.username,
+    //   //   password: item.password,
+    //   //   firstName: item.FirstName,
+    //   //   lastName: item.LastName,
+    //   //   token: item.Token
+    //   // });
       
-      this.user = response.data;
-      localStorage.setItem('user', JSON.stringify(this.user));
-      this.userSubject.next(this.user as User);
-      return this.user;
-      // Response handling may change after testing with mock data and/or database
-      // console.log(response);      
-      // return response.data as User;
-    }, (error) => {
+    //   this.user = response.data;
+    //   localStorage.setItem('user', JSON.stringify(this.user));
+    //   this.userSubject.next(this.user as User);
+    //   return this.user;
+    //   // Response handling may change after testing with mock data and/or database
+    //   // console.log(response);      
+    //   // return response.data as User;
+    // }, (error) => {
+    //   console.log(error);
+    // });
+    try {
+      let options = {
+        method: 'POST',
+        url: this.loginUrl + '/login',
+        mode: 'no-cors',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json;charset=UTF-8',
+
+        } ,
+        body: {
+            'Username': userName,
+            'Password': passWord
+        }       
+      };
+      const response = await axios(options);
+      console.log(response);
+      return await response.data as User;
+    }
+    catch (error) {
       console.log(error);
-    });
+      return User;
+    }
   }
 
   logout() {
@@ -63,20 +87,31 @@ export class AccountService {
 }
 
   register(user : User) {
-    axios.post(this.loginUrl + '/user', {
-      username: user.username,
-      password: user.password,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      token: user.token
-    })
-    .then((response) => {
-      // Response handling may change after testing with mock data and/or database
-      console.log(response);
-      return response.status;
-    }, (error) => {
-      console.log(error);
-    });
+    // axios.post(this.loginUrl + '/user', {
+    //   username: user.username,
+    //   password: user.password,
+    //   firstName: user.firstName,
+    //   lastName: user.lastName,
+    //   token: user.token
+    // })
+    // .then((response) => {
+    //   // Response handling may change after testing with mock data and/or database
+    //   console.log(response);
+    //   return response.status;
+    // }, (error) => {
+    //   console.log(error);
+    // });
+    let options = {
+      method: 'POST',
+      url: this.loginUrl + '/register',
+      mode: 'no-cors',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json;charset=UTF-8'
+      }
+    }
+    let user2 = {firstname:"tester", lastname:"mester", username:"tmest02",  password:"testingisfun", email:"error404@email.com" };
+    return this.http.post<any>(this.loginUrl + '/register', user2, options);
   }
 
   getCurrentUser() {
