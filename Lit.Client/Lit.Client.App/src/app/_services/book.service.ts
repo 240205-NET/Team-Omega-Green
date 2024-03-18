@@ -43,7 +43,15 @@ export class BookService {
 
   async getBookByIdAsync (id : string) {
     try {
-      const response = await axios.get(this.bookUrl + `/books/${id}`);
+      let options = {
+        method: 'GET',
+        url: this.bookUrl + '/books/${id}',
+        mode: 'no-cors',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json;charset=UTF-8'
+        },
+      const response = await axios(options);
       console.log(response);
       return response.data as Book;
     }
