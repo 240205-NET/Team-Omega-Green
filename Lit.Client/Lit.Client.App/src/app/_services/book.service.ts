@@ -10,13 +10,14 @@ import { Book } from '../_models/book.model';
 })
 export class BookService {
 
-  private bookUrl : string;
+  public bookUrl : string;
 
   constructor (
     // private router : Router;
   )
   {
     this.bookUrl = 'https://omega-green.azurewebsites.net/api';
+    //this.bookUrl = 'https://6cbff109-9d1e-4268-83f0-e763975c271d.mock.pstmn.io'
   }
 
   async getAllBooksAsync() : Promise<Book[]> {
@@ -66,7 +67,7 @@ export class BookService {
       let options = {
         method: 'GET',
         url: this.bookUrl + `/books/${isbn}`,
-        mode: 'no-corse',
+        mode: 'no-cors',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json;charset=UTF-8'
@@ -136,7 +137,7 @@ export class BookService {
     }
   }
 
-  async deleteBookByAsync (id : string) {
+  async deleteBookByIdAsync (id : string) {
     try {
       let options = {
         method: 'DELETE',
