@@ -1,23 +1,31 @@
-<div>
-  <h1>Login</h1>
-  <div>
+<div class="card">
+  <h1 class="card-header">Login</h1>
+  <div class="card-body">
     <!-- pass in form to form variable and end on onsubmiy
       still have to print error messages with validators-->
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <div>
-        <label>UserName: </label>
-        <input type="text" formControlName="username"/>
+      <div class="mb-5">
+        <label class="form-label">UserName: </label>
+        <input type="text" formControlName="username" class="form-control" [ngClass]="{'is-invalid':submitted&&this.form.controls['username'].errors}"/>
+        <div *ngIf="submitted && this.form.controls['username'].errors" class="invalid-feedback">
+          <div *ngIf="this.form.controls['username'].errors?.['required']">Username is Required!
+          </div>
+        </div>
+      </div>
+      <div class="mb-5">
+        <label class="form-label">Password: </label>
+        <input type="text" formControlName="password" class="form-control" [ngClass]="{'is-invalid':submitted&&this.form.controls['password'].errors}"/>
+        <div *ngIf="submitted && this.form.controls['password'].errors" class="invalid-feedback">
+          <div *ngIf="this.form.controls['password'].errors?.['required']">Password is Required!
+          </div>
+        </div>
       </div>
       <div>
-        <label>Password: </label>
-        <input type="password" formControlName="password">
-      </div>
-      <div>
-        <button [disabled]="loading">
-          <span *ngIf="loading"></span>
+        <button [disabled]="loading" class="btn">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
           Login
         </button>
-        <a routerLink="../register">Register</a>
+        <a routerLink="../register" class="btn">Register</a>
       </div>
     </form>
   </div>

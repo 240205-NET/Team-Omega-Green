@@ -1,14 +1,22 @@
-<div>
-  <h1>Register</h1>
-  <div>
+<div class="card">
+  <h1 class="card-header">Register</h1>
+  <div class="card-body">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <div>
-        <label>First Name: </label>
-        <input type="text" formControlName="firstName"/>
+      <div class="mb-5">
+        <label class="form-label">First Name: </label>
+        <input type="text" formControlName="firstName" class="form-control" [ngClass]="{'is-invalid':submitted&&this.form.controls['firstName'].errors}"/>
+        <div *ngIf="submitted && this.form.controls['firstName'].errors" class="invalid-feedback">
+          <div *ngIf="this.form.controls['firstName'].errors?.['required']">First Name is Required!
+          </div>
+        </div>
       </div>
-      <div>
-        <label>Last Name: </label>
-        <input type="text" formControlName="lastName"/>
+      <div class="mb-5">
+        <label class="form-label">First Name: </label>
+        <input type="text" formControlName="firstName" class="form-control" [ngClass]="{'is-invalid':submitted&&this.form.controls['firstName'].errors}"/>
+        <div *ngIf="submitted && this.form.controls['firstName'].errors" class="invalid-feedback">
+          <div *ngIf="this.form.controls['firstName'].errors?.['required']">First Name is Required!
+          </div>
+        </div>
       </div>
       <div>
         <label>UserName: </label>

@@ -13,7 +13,7 @@ export class NavbarComponent {
   constructor(public router: Router, private route: ActivatedRoute, private accntSrvice: AccountService) {}
 
   hasUser() {
-    if(this.accntSrvice.getCurrentUser()) {
+    if(this.accntSrvice.userValue) {
       return true;
     }
     else {
@@ -24,13 +24,13 @@ export class NavbarComponent {
   navigateToLogin() {
     this.router.navigate(['account/login']);
 
-    
+
   }
 
   navigateToRegister() {
     this.router.navigate(['account/register']);
 
-    
+
   }
 
   navigateToHome() {

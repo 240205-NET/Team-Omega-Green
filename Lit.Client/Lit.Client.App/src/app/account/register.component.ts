@@ -25,6 +25,7 @@ export class RegisterComponent {
     this.form = this.formBuilder.group({
       firstName : ['', Validators.required],
       lastName : ['', Validators.required],
+      email : ['', Validators.required],
       username : ['', Validators.required],
       password : ['', Validators.required]
     })
@@ -39,13 +40,13 @@ export class RegisterComponent {
 
     this.loading = true;
 
-    // this.accountService.register(this.form.value).pipe(first()).subscribe({
-    //   next : () => {
-    //     this.router.navigate(['../login'], {relativeTo: this.route});
-    //   },
-    //   error : error => {
-    //     this.loading = false;
-    //   }
-    // })
+    this.accountService.registerHttp(this.form.value).pipe(first()).subscribe({
+      next : () => {
+        this.router.navigate(['../login'], {relativeTo: this.route});
+      },
+      error : error => {
+        this.loading = false;
+      }
+    })
   }
 }

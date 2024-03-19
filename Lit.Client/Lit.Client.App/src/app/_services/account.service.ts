@@ -49,7 +49,7 @@ export class AccountService {
    * @param passWord
    */
   loginHttp(userName : string, passWord : string) {
-    return this.http.post<User>('',{userName,passWord}).pipe(map(user => {
+    return this.http.post<User>('https://omega-green.azurewebsites.net/api/auth/login',{userName,passWord}).pipe(map(user => {
       //this is to store user in the local part as a session so user is not lost as page refreshes
       localStorage.setItem('user',JSON.stringify(user));
       //this is essentially setting the user observable to the new user not just local storage behaviordubject
@@ -72,7 +72,7 @@ export class AccountService {
    * @param user
    */
   registerHttp(user: User) {
-    return this.http.post('',user);
+    return this.http.post('https://omega-green.azurewebsites.net/api/auth/register',user);
   }
   loginAxios(userName : string, passWord : string) {
     axios.post(this.loginUrl + '/login', {
@@ -129,13 +129,6 @@ export class AccountService {
     }, (error) => {
       console.log(error);
     });
-  }
-
-  /**
-   * returns the
-   */
-  getCurrentUser() {
-    return this.userSubject.value;
   }
 
   getAllUsersAxios() {
