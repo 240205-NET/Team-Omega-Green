@@ -16,16 +16,8 @@ builder.Services.AddCors();
 builder.Services.AddScoped<ITokenService, TokenService>();
 
 var app = builder.Build();
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: "allow_localhost",
-                      policy =>
-                      {
-                          policy.WithOrigins("http://localhost:4200, https://localhost:4200")
-                                .AllowAnyHeader()
-                                .AllowAnyMethod();
-                      });
-});
+
+app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -35,7 +27,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors("allow_localhost");
 
 app.UseAuthorization();
 
