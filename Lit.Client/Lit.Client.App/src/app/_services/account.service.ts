@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from "rxjs";
+import {BehaviorSubject, map, Observable} from "rxjs";
 import axios from 'axios';
 
 import { User } from '../_models/user.model';
@@ -10,8 +10,17 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class AccountService {
-
+  /**
+   * return last value when subscribed
+   * use next to gove it a value
+   * used for services since services are rendered before the components use them
+   * @private
+   */
   private userSubject : BehaviorSubject<User | null>
+  /**
+   * this has no state and is run for each observer
+   * observer cannot change value can only listen so using next is problematic
+   */
   public user : Observable<User | null>
   private loginUrl : string
 
@@ -24,6 +33,47 @@ export class AccountService {
     this.loginUrl = 'https://omega-green.azurewebsites.net/api/auth';
   }
 
+  /**
+   * returns the user object that is latest in the stream
+   * so lets say an user logs out not gonna return the old one
+   */
+  public get userValue() {
+    return this.userSubject.value;
+  }
+
+  /**
+   * sends a post request to server
+   * recieves the response and pipes it so we get user object
+   * returns the logged in user object
+   * @param userName
+   * @param passWord
+   */
+  loginHttp(userName : string, passWord : string) {
+    return this.http.post<User>('',{userName,passWord}).pipe(map(user => {
+      //this is to store user in the local part as a session so user is not lost as page refreshes
+      localStorage.setItem('user',JSON.stringify(user));
+      //this is essentially setting the user observable to the new user not just local storage behaviordubject
+      this.userSubject.next(user);
+      return user;
+    }))
+  }
+
+  /**
+   * logs out user by removing user from local storage and setting the behavior subject to null
+   */
+  logoutHttp() {
+    localStorage.removeItem('user');
+    this.userSubject.next(null);
+    this.router.navigate(['/account/login']);
+  }
+
+  /**
+   * simple register method to basically send the user object from component to the server
+   * @param user
+   */
+  registerHttp(user: User) {
+    return this.http.post('',user);
+  }
   loginAxios(userName : string, passWord : string) {
     axios.post(this.loginUrl + '/login', {
       username: userName,
@@ -81,6 +131,9 @@ export class AccountService {
     });
   }
 
+  /**
+   * returns the
+   */
   getCurrentUser() {
     return this.userSubject.value;
   }
@@ -126,9 +179,9 @@ export class AccountService {
 
   deleteUserByIdAxios(id : string) {
     axios.delete(this.loginUrl + `/user/${id}`, {
-      data: {
-        id: id
-      }
+      // data: {
+      //   id: id
+      // }
     })
     .then((response) => {
       // Response handling may change after testing with mock data and/or database
