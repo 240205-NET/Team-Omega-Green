@@ -74,17 +74,17 @@ export class LoginComponent {
      *
      */
     console.log(this.accountService.login(this.form.controls['username'].value, this.form.controls['password'].value));
-    // this.accountService.login(this.form.controls['username'].value, this.form.controls['password'].value).pipe(first()).subscribe({
-    //   next : () => {
-    //     this.router.navigateByUrl(this.route.snapshot.queryParams['returnUrl'] || '/');
-    //   },
-    //   error : error => {
-    //     /*
-    //     for some reason if data was not available set loading to false
-    //     have to print error message
-    //      */
-    //     this.loading = false;
-    //   }
-    // })
+    this.accountService.loginHttp(this.form.controls['username'].value, this.form.controls['password'].value).pipe(first()).subscribe({
+      next : () => {
+        this.router.navigateByUrl(this.route.snapshot.queryParams['returnUrl'] || '/');
+      },
+      error : error => {
+        /*
+        for some reason if data was not available set loading to false
+        have to print error message
+         */
+        this.loading = false;
+      }
+    })
   }
 }
