@@ -44,7 +44,7 @@ namespace Lit.Server.Api
 			};
 			_context.Users.Add(user);
 			await _context.SaveChangesAsync();
-			return new UserDto
+			var userDto = new UserDto
 			{
 				Username = user.Username,
 				Email = user.Email,
@@ -52,6 +52,7 @@ namespace Lit.Server.Api
 				LastName = user.LastName,
 				Token = _tokenService.CreateToken(user),
 			};
+			return Ok(userDto); // Wrap the response in Ok()
 
 		}
 		[HttpPost("login")]
