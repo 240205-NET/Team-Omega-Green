@@ -25,7 +25,7 @@ namespace Lit.Server.Api
 			_configuration = configuration;
 			_tokenService = tokenService;
 		}
-		[HttpPost("register")] // POST: api/account/register
+		[HttpPost("register")] // POST: api/auth/register
 		public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
 		{
 
@@ -73,6 +73,21 @@ namespace Lit.Server.Api
 				Username = user.Username,
 				Token = _tokenService.CreateToken(user)
 			};
+		}
+
+		[HttpPost("logout")]
+		public ActionResult Logout()
+		{
+			// Assuming you're logging user logout events
+			_logger.LogInformation("User logged out successfully.");
+
+			// If you have a mechanism to invalidate tokens or manage sessions on the server-side,
+			// you could include that logic here. For example, adding the token to a blacklist.
+
+			// Note: The actual invalidation of the token often happens client-side,
+			// as the server typically cannot directly remove tokens stored in the client's environment.
+
+			return Ok("User logged out successfully.");
 		}
 
 		private async Task<bool> UserExists(string username)
