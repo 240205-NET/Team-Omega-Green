@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
 import { BookService } from '../_services/book.service';
 import { Book } from '../_models/book.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-booklist',
@@ -13,13 +14,18 @@ import { Book } from '../_models/book.model';
 export class BooklistComponent implements OnInit
 {
   books? : Book[];
-  constructor (private bookservice: BookService)  {  }
+  constructor (private router: Router, private bookservice: BookService)  {  }
 
   async ngOnInit(): Promise<void> {
     this.books = await this.bookservice.getAllBooksAsync()
   }
 
+  navigateToDetails() {
+    this.router.navigate(['book-detail/:id'])
+  }
+
 }
+
 
 /*
 function getAllBooks() {
