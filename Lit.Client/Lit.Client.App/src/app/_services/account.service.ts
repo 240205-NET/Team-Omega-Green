@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import { User } from '../_models/user.model';
 import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -45,11 +46,11 @@ export class AccountService {
    * sends a post request to server
    * recieves the response and pipes it so we get user object
    * returns the logged in user object
-   * @param userName
-   * @param passWord
+   * @param username
+   * @param password
    */
-  loginHttp(userName : string, passWord : string) {
-    return this.http.post<User>('https://omega-green.azurewebsites.net/api/auth/login',{userName,passWord}).pipe(map(user => {
+  loginHttp(username : string, password : string) {
+    return this.http.post<User>(`${environment.apiUrl}/users/authenticate`,{username,password}).pipe(map(user => {
       //this is to store user in the local part as a session so user is not lost as page refreshes
       localStorage.setItem('user',JSON.stringify(user));
       //this is essentially setting the user observable to the new user not just local storage behaviordubject
@@ -72,7 +73,7 @@ export class AccountService {
    * @param user
    */
   registerHttp(user: User) {
-    return this.http.post('https://omega-green.azurewebsites.net/api/auth/register',user);
+    return this.http.post(`${environment.apiUrl}/users/register`,user);
   }
   loginAxios(userName : string, passWord : string) {
     axios.post(this.loginUrl + '/login', {

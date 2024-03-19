@@ -34,6 +34,7 @@ export class NavbarComponent {
   }
 
   navigateToHome() {
+    this.accntSrvice.logoutHttp();
     this.router.navigate(['home']);
   }
 
