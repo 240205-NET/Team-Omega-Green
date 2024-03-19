@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - feat-models # temporary until we've merged into main
+      - feat-auth
       # TODO - main
   workflow_dispatch:
 env:
