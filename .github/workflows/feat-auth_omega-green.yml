@@ -7,8 +7,10 @@ on:
   push:
     branches:
       - feat-auth
+      # TODO - main
   workflow_dispatch:
-
+env:
+  WORKING_DIR: Lit.Server/Lit.Server.Api # where our ASP.NET app lives
 jobs:
   build:
     runs-on: windows-latest
@@ -19,14 +21,14 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '7.x'
+          dotnet-version: "7.x"
           include-prerelease: true
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build ${{env.WORKING_DIR}} --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: dotnet publish ${{env.WORKING_DIR}} -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -38,7 +40,7 @@ jobs:
     runs-on: windows-latest
     needs: build
     environment:
-      name: 'Production'
+      name: "Production"
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
       id-token: write #This is required for requesting the JWT
@@ -48,19 +50,18 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: .net-app
-      
+
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_DB31FDB2E9EB4D999CDCDBE6108A61A4 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_9765D3CA5B6D458D8EEDCD8E81F269ED }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_03DC2FABEDA44DE5BDE25A34ABC26278 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_42B6E7B37ADF4DDC8A40090EF1CB3563 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_C8747845C5C64BEAA2E16C346B729C98 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_EAA38D100E4A44E8A023D98E4CC82C29 }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'omega-green'
-          slot-name: 'Production'
+          app-name: "omega-green"
+          slot-name: "Production"
           package: .
-          
