@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import {BehaviorSubject, map, Observable} from "rxjs";
 import axios from 'axios';
+import { HttpClient } from '@angular/common/http';
 
 import { User } from '../_models/user.model';
 import {HttpClient} from "@angular/common/http";
@@ -33,6 +34,28 @@ export class AccountService {
     this.user = this.userSubject.asObservable();
     this.loginUrl = 'https://omega-green.azurewebsites.net/api/auth';
   }
+
+  async loginFetch(userName : string, passWord : string) {
+    try {
+      let options = {
+        method: 'POST',
+        url: this.loginUrl + '/login',
+        mode: 'no-cors',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json;charset=UTF-8',
+
+        } ,
+        body: {
+            'Username': userName,
+            'Password': passWord
+        }       
+      };
+      const response = await axios(options);
+      console.log(response);
+      return await response.data as User;
+    }
+    catch (error) {
 
   /**
    * returns the user object that is latest in the stream
@@ -75,6 +98,7 @@ export class AccountService {
   registerHttp(user: User) {
     return this.http.post(`${environment.apiUrl}/users/register`,user);
   }
+      
   loginAxios(userName : string, passWord : string) {
     axios.post(this.loginUrl + '/login', {
       username: userName,
@@ -101,7 +125,8 @@ export class AccountService {
       // return response.data as User;
     }, (error) => {
       console.log(error);
-    });
+      return User;
+    }
   }
 
   logoutAxios() {
@@ -113,8 +138,22 @@ export class AccountService {
             // Redirect the user to the login page or home page as necessary
             window.location.href = '/login';
         });
-}
-
+  }
+    
+  registerHttp(user : User) {
+    let options = {
+      method: 'POST',
+      url: this.loginUrl + '/register',
+      mode: 'no-cors',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json;charset=UTF-8'
+      }
+    }
+    let user2 = {firstname:"tester", lastname:"mester", username:"tmest02",  password:"testingisfun", email:"error404@email.com" };
+    return this.http.post<any>(this.loginUrl + '/register', user2, options);
+  }
+    
   registerAxios(user : User) {
     axios.post(this.loginUrl + '/user', {
       username: user.username,
