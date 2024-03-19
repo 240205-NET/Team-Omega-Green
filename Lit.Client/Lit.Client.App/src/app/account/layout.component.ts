@@ -26,7 +26,7 @@ export class LayoutComponent {
       if the user exists aka logged in the page should just redirect to home page
       shouldn't happen but just in case
      */
-    if(this.accountService.getCurrentUser()) {
+    if(this.accountService.userValue) {
       this.router.navigate(['/']);
     }
   }
