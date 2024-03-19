@@ -14,7 +14,7 @@
       </div>
       <div class="mb-5">
         <label class="form-label">Password: </label>
-        <input type="text" formControlName="password" class="form-control" [ngClass]="{'is-invalid':submitted&&this.form.controls['password'].errors}"/>
+        <input type="password" formControlName="password" class="form-control" [ngClass]="{'is-invalid':submitted&&this.form.controls['password'].errors}"/>
         <div *ngIf="submitted && this.form.controls['password'].errors" class="invalid-feedback">
           <div *ngIf="this.form.controls['password'].errors?.['required']">Password is Required!
           </div>
