@@ -2,19 +2,19 @@
     <div class="container">
         <div class="card shadow p-3 mb-5 bg-white rounded">
             <div class="card-header">
-                <h3>Book Title by Author</h3>
+                <h3>{{ book.title }} by {{book.author}}</h3>
             </div>
             <div class="card-body">
                 <h6 class="card-title text-coral">Details</h6>
-                <p class="card-text text-muted">ISBN: 00000000000</p>
-                <p class="card-text text-coral">Category: Mystery</p>
+                <p class="card-text text-muted">ISBN: {{book.isbn}}</p>
+                <p class="card-text text-coral">Category: {{book.categoryName}}</p>
                 <hr>
                 <h4 class="mb-3 text-coral">Review</h4>
                 <p class="card-text">
                     Overall, "The Silent Forest" is a captivating read that will leave readers spellbound from beginning
                     to end. Harper's masterful storytelling and enchanting world-building make this book a must-read for
                     fantasy lovers of all ages.</p>
-                <a href= "#" class="btn btn-primary">Add to Wishlist</a>
+                <a (click)="addToWishlist()" class="btn btn-primary">Add to Wishlist</a>
             </div>
         </div>
     </div>
