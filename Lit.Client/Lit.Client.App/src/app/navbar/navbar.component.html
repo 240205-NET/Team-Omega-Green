@@ -36,6 +36,7 @@
       </ul>
       
       <div *ngIf="hasUser(); else elseBlock">
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="navigateToWishList()">Wishlist</button>
         <button class="btn btn-outline-success my-2 my-sm-0" (click)="navigateToUserInfo()">AccntInfo</button>
         <button class="btn btn-outline-success my-2 my-sm-0" (click)="navigateToHome()">Logout</button>
       </div>

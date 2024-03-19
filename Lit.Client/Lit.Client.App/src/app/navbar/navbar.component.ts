@@ -38,7 +38,13 @@ export class NavbarComponent {
   }
 
   navigateToUserInfo() {
+    this.router.navigate(['users/:id']);
+  }
+
+  navigateToWishList() {
     this.router.navigate(['home']);
+
+    
   }
 
 }
