@@ -75,10 +75,10 @@ public class UsersController : ControllerBase
 			return BadRequest(ModelState);
 		}
 
-		if (UserId != userDto.UserId)
-		{
-			return BadRequest("The User ID in the URL does not match the User ID in the body.");
-		}
+		// if (UserId != userDto.UserId)
+		// {
+		// 	return BadRequest("The User ID in the URL does not match the User ID in the body.");
+		// }
 
 		var user = await _context.Users.FindAsync(UserId);
 		if (user == null)
