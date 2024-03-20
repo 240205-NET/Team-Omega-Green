@@ -70,6 +70,7 @@ namespace Lit.Server.Api
 			}
 			return new UserDto
 			{
+				UserId = user.UserId,
 				Username = user.Username,
 				Token = _tokenService.CreateToken(user)
 			};
