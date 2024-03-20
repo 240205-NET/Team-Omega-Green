@@ -1,9 +1,31 @@
 <header>
     <app-navbar></app-navbar>
 </header>
+
+
+
+
+<body>
+
+<div class="container">
+
 <div class="logo">
-  <h1>Hi {{user?.firstName}}!</h1>
-    <img src="../assets/book-logo.png" alt="book logo" width="250pt" height="250pt">
-    <h1 >Lit</h1>
-    <p>Welcome to our Book App, here you can track books you've read or explore our storefront for more.</p>
+
+
+
+
+
+    <a href="/booklist"><img src="../assets/lit_logo.png" alt="book logo" width="450pt" ></a>
+    
+    <h1 *ngIf="user; else noUserMessage">Welcome back, {{user.firstName}}!</h1>
+    <ng-template #noUserMessage><h1>Welcome!</h1></ng-template>
+    <hr>
+    <div class="description">
+    <p>Whether you're an avid reader looking to organize your literary journey or a curious explorer seeking your next adventure between the pages, you've come to the right place. With our user-friendly interface, you can effortlessly track the books you've read, immerse yourself in personalized recommendations, and explore our extensive storefront for your next captivating read. Get ready to embark on a journey through worlds unknown and stories untold. Let's dive into the captivating world of literature together!</p></div>
+    <hr>
 </div>
+
+
+</div>
+
+</body>

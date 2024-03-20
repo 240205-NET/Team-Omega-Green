@@ -45,7 +45,7 @@ export class BookService {
     try {
       let options = {
         method: 'GET',
-        url: this.bookUrl + `/books/${id}`,
+        url: this.bookUrl + `/books/isbn/${id}`,
         mode: 'no-cors',
         headers: {
             'Accept': 'application/json',
