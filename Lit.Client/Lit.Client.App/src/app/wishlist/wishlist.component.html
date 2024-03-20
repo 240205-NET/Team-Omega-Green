@@ -1,0 +1,33 @@
+<head>
+    <link rel="stylesheet" href = "booklist.component.css">
+</head>
+
+<body class="BG">
+    <header>
+        <app-navbar></app-navbar>
+    </header>
+    <div class="mainContent">
+        <div class="tableDiv">
+            <h1 class="title1">Your Wishlist</h1>
+            <table id = "book-table" class="table table-striped table-hover">
+                <thead>
+                    <th>Book Title</th>
+                    <th>Author</th>
+                    <th>ISBN number</th>
+                    <th>Category</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr class="records" *ngFor="let book of wishlist">
+                        <td>{{book.title}}</td>
+                        <td>{{book.author}}</td>
+                        <td>{{book.isbn}}</td>
+                        <td>{{book.categoryName}}</td>
+                        <td><a [routerLink]= "['/book-detail/', book.isbn]">Details</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>src = "wishlist.component.ts"</script>
+</body>

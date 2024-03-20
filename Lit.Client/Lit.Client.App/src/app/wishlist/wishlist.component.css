@@ -1,0 +1,48 @@
+.BG{
+    background-color: antiquewhite;
+}
+.tableDiv{
+    display: inline-block;
+    background-color: white;
+    background-image: url("/assets/book-logo_bg.png");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+    margin: 50px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding-left: 48px;
+    padding-right: 48px;
+    
+}
+.table{
+    background-color: rgba( 154,205,50,.9);
+
+    margin: 50pt auto;
+    width: fit-content;
+
+}
+.records{
+    
+    
+    
+}
+.TD{
+    width:750pt;
+    
+}
+th{
+    background-color: black;
+    color: orange;
+}
+.title1{
+    text-align: center;
+    padding: 24px;
+
+}
+.mainContent{
+    display: block;
+    margin:auto;
+}
