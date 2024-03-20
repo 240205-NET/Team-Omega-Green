@@ -33,7 +33,8 @@ export class BookDetailComponent implements OnInit {
       categoryName: this.book.categoryName,
       // Add other properties as needed
     };
-
+      
+    this.bookService.addBookToWishlist(wishlistBook);
     // Do something with the wishlistBook object (e.g., save it to a wishlist array)
     console.log('Added to wishlist:', wishlistBook);
   }
