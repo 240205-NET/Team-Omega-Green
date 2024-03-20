@@ -4,6 +4,10 @@
 .tableDiv{
     display: inline-block;
     background-color: white;
+    background-image: url("/assets/book-logo_bg.png");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
     margin: 50px;
     margin-left: 50%;
     transform: translateX(-50%);
@@ -14,15 +18,20 @@
     
 }
 .table{
-    background-color: yellowgreen;
+    background-color: rgba( 154,205,50,.9);
+
     margin: 50pt auto;
     width: fit-content;
+
 }
 .records{
-    background-color: yellowgreen;
+    
+    
+    
 }
 .TD{
     width:750pt;
+    
 }
 th{
     background-color: black;
