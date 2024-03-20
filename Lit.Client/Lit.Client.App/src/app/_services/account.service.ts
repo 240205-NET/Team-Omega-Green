@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+
 import {BehaviorSubject, map, Observable} from "rxjs";
+
 import axios from 'axios';
 
 import { User } from '../_models/user.model';
@@ -8,9 +10,10 @@ import {HttpClient, HttpUserEvent} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AccountService {
+
   /**
    * return last value when subscribed
    * use next to gove it a value
