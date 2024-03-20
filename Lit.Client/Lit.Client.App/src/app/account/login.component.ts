@@ -86,5 +86,6 @@ export class LoginComponent {
         this.loading = false;
       }
     })
+    //console.log(this.accountService.loginFetch(this.form.controls['username'].value, this.form.controls['password'].value));
   }
 }

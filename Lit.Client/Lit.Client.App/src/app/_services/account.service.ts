@@ -4,7 +4,7 @@ import {BehaviorSubject, map, Observable} from "rxjs";
 import axios from 'axios';
 
 import { User } from '../_models/user.model';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpUserEvent} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 
 @Injectable({
@@ -52,7 +52,13 @@ export class AccountService {
       };
       const response = await axios(options);
       console.log(response);
-      return await response.data as User;
+      let u = await response.data as User;
+      //this is to store user in the local part as a session so user is not lost as page refreshes
+      localStorage.setItem('user',JSON.stringify(u));
+      //this is essentially setting the user observable to the new user not just local storage behaviordubject
+      this.userSubject.next(u);
+      return u;
+
     } catch (error) {
       return new User()
     }
@@ -74,12 +80,13 @@ export class AccountService {
    * @param password
    */
   loginHttp(username : string, password : string) {
-    return this.http.post<User>(`${environment.apiUrl}/users/authenticate`,{username,password}).pipe(map(user => {
+    return this.http.post<User>(this.loginUrl + '/login',{username,password}).pipe(map(user => {
       //this is to store user in the local part as a session so user is not lost as page refreshes
+      console.log(user);
       localStorage.setItem('user',JSON.stringify(user));
       //this is essentially setting the user observable to the new user not just local storage behaviordubject
-      this.userSubject.next(user);
-      return user;
+      this.userSubject.next(user as User);
+      return user as User;
     }))
   }
 
@@ -97,7 +104,7 @@ export class AccountService {
    * @param user
    */
   registerHttp(user: User) {
-    return this.http.post(`${environment.apiUrl}/users/register`,user);
+    return this.http.post(this.loginUrl + '/register',user);
   }
 
   loginAxios(userName : string, passWord : string) {
