@@ -44,13 +44,14 @@ namespace Lit.Server.Api
 			await _context.SaveChangesAsync();
 			var userDto = new UserDto
 			{
+				UserId = user.UserId,
 				Username = user.Username,
 				Email = user.Email,
 				FirstName = user.FirstName,
 				LastName = user.LastName,
 				Token = _tokenService.CreateToken(user),
 			};
-			return Ok(userDto); // Wrap the response in Ok()
+			return userDto;
 
 		}
 		[HttpPost("login")]
