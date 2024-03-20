@@ -27,8 +27,7 @@ export class RegisterComponent {
       lastName : ['', Validators.required],
       email : ['', Validators.required],
       username : ['', Validators.required],
-      password : ['', Validators.required],
-      email : ['', Validators.required]
+      password : ['', Validators.required]
     })
   }
 
@@ -40,8 +39,7 @@ export class RegisterComponent {
     }
 
     this.loading = true;
-    
-console.log(this.accountService.register(this.form.value).pipe(first())  + "hey");
+
     this.accountService.registerHttp(this.form.value).pipe(first()).subscribe({
       next : () => {
         this.router.navigate(['../login'], {relativeTo: this.route});
