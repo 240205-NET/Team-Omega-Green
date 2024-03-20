@@ -9,6 +9,7 @@ import { LayoutComponent } from './account/layout.component';
 import { AccountModule } from './account/account.module';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { UsersModule } from './users/users.module';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
 
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: 'users',
     loadChildren: userModule
+  },
+  {
+    path: 'wishlist',
+    component: WishlistComponent
   }
 ];
 

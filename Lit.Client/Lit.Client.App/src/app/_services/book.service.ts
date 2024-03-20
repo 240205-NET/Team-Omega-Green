@@ -171,7 +171,7 @@ export class BookService {
   }
 
   addBookToWishlist(book: Book) {
-    let bookArray  = JSON.parse(localStorage.getItem('wishlist')!) as Book[];
+    let bookArray  = JSON.parse(localStorage.getItem('wishlist')!);
     let book2 : Book = {
       title: "randomnames",
       author: "randomguy",
@@ -179,9 +179,10 @@ export class BookService {
       categoryName: "surprise",
     }
     console.log(bookArray)
-    bookArray.push(book2);
+    bookArray.push(book);
     console.log(JSON.stringify(bookArray))
     localStorage.setItem('wishlist', JSON.stringify(bookArray));
+    this.wishlistSubject.next(bookArray as Book[])
     
     // bookArray.
     // localStorage.setItem('wishlist', JSON.)

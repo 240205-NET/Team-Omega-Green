@@ -43,7 +43,7 @@ export class NavbarComponent {
   }
 
   navigateToWishList() {
-    this.router.navigate(['home']);
+    this.router.navigate(['wishlist']);
 
 
   }

@@ -15,7 +15,9 @@ export class WishlistComponent {
 
   ngOnInit() {
     // Grab wishlist contents and assign this.wishlist to it
-    this.wishlist;
+    // this.wishlist = this.bookservice.wishlist.subscribe(next())
+    this.wishlist = JSON.parse(localStorage.getItem('wishlist')!) as Book[];
+    console.log(this.wishlist);
   }
   
 }
