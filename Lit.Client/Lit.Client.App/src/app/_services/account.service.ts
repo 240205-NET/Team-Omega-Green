@@ -221,4 +221,19 @@ export class AccountService {
       console.log(error);
     })
   }
+
+  updateUser(userId : string, params : any) {
+    params['userId'] = this.userValue?.userId;
+    console.log(params)
+    console.log("https://omega-green.azurewebsites.net/api" + '/users/' + userId)
+    // return this.http.put<any>("https://omega-green.azurewebsites.net/api" + '/users/' + userId, {userId:userId}).pipe(map(x => {
+    //   if(userId == this.userValue?.userId) {
+    //     let user = {...this.userValue,...params};
+    //     localStorage.setItem('user', JSON.stringify(user));
+    //     this.userSubject.next(user);
+    //   }
+    //   return x;
+    // }));
+    return this.http.put('https://omega-green.azurewebsites.net/api/users/16', {userId: '16'});
+  }
 }

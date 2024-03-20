@@ -1,20 +1,17 @@
 
 <h1 style="text-align: center;">User Info</h1>
-<table style=" margin: 0 auto; border: 1">
-    <tr>
+<table style=" margin: 0 auto; border: 1" class="table">
+    <tr class="d-sm-table-row">
       <th>First Name</th>
       <th>Last Name</th>  
       <th>Username</th>
-      <th>Password</th>
       <th>Email</th>
     </tr>
     <tr>
-        <!--Thinking here is where we use string interprolation like {{username}} -->
-      <!-- <td>{{this.user.firstName}}</td>
-      <td>{{this.user.lastName}}</td>
-      <td>{{this.user.username}}</td>
-      <td>{{this.user.password}}</td>
-      <td>{{this.user.email}}</td> -->
+      <td>{{this.user?.firstName}}</td>
+      <td>{{this.user?.lastName}}</td>
+      <td>{{this.user?.username}}</td>
+      <td>{{this.user?.email}}</td>
     </tr>
   </table>
 <br>
