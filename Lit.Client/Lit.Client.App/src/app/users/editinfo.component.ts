@@ -34,17 +34,14 @@ export class EditInfoComponent implements OnInit{
     this.router.navigate(['users/:id']);
   }
 
-  OnSubmit() {
+   OnSubmit() {
     if(this.form.invalid) {
       return;
     }
     console.log(this.form.value);
     console.log(this.id);
-    this.accntSrvice.updateUser(this.id!, this.form.value).pipe().subscribe({
-      next:() => {
-        this.router.navigateByUrl('users/:id')
-      }
-    })
+    this.accntSrvice.updateUserByIdAxios(this.id!, this.form.value);
+    this.router.navigateByUrl(`users/:id`);
 
   }
   
