@@ -16,9 +16,11 @@ import { SearchResultsComponent } from './search-results/search-results.componen
 
 import { ListUserComponent } from './users/listuser.component';
 import { NavbarModule } from './navbar/navbar.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-
+import {fakeBackendProvider} from "./_interceptors/fake-backend";
+import {JwtInterceptor} from "./_interceptors/jwt.interceptor";
+import { BookDetailComponent } from './book-detail/book-detail.component';
 
 
 @NgModule({
@@ -27,8 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     LandingComponent,
     HomeComponent,
     BooklistComponent,
-    SearchResultsComponent
-
+    SearchResultsComponent,
+    BookDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,12 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   // exports:[NavbarModule],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+
+    // provider used to create fake backend
+    fakeBackendProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
