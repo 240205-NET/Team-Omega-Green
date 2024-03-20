@@ -84,10 +84,10 @@ public class UsersController : ControllerBase
 			return NotFound();
 		}
 
-		user.Username = userDto.Username;
-		user.Email = userDto.Email;
-		user.FirstName = userDto.FirstName;
-		user.LastName = userDto.LastName;
+		user.Username = userDto.Username ?? user.Username;
+		user.Email = userDto.Email ?? user.Email;
+		user.FirstName = userDto.FirstName ?? user.FirstName;
+		user.LastName = userDto.LastName ?? user.LastName;
 
 		try
 		{
