@@ -37,8 +37,30 @@ public class BooksController : ControllerBase
 
 		return books;
 	}
+	
+	
+	[HttpGet("Author/{Author}")]
+	public async Task<ActionResult<IEnumerable<BookDTO>>> GetBooksByAuthor(string Author)
+	{
+		var books = await _context.Books
+			.Include(book => book.Category)
+			.Select(book => new BookDTO
+			{
+				Isbn = book.Isbn,
+				Title = book.Title,
+				Author = book.Author,
+				CategoryId = book.CategoryId,
+				CategoryName = book.Category.Name 
+			})
+			.Where(b => b.Author == Author)
+			// .FirstOrDefaultAsync(b => b.Author == Author);
+			.ToListAsync();
+
+		return books;
+	}
+
 	// GET: api/Books/5
-	[HttpGet("{Isbn}")]
+	[HttpGet("Isbn/{Isbn}")]
 	public async Task<ActionResult<BookDTO>> GetBookByISBN(string Isbn)
 	{
 		var book = await _context.Books
