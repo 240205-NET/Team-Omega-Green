@@ -25,7 +25,7 @@ namespace Lit.Server.Api
 			_configuration = configuration;
 			_tokenService = tokenService;
 		}
-		[HttpPost("/register")] // POST: api/auth/register
+		[HttpPost("register")] // POST: api/auth/register
 		public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
 		{
 
@@ -39,8 +39,6 @@ namespace Lit.Server.Api
 				Email = registerDto.Email,
 				FirstName = registerDto.FirstName,
 				LastName = registerDto.LastName,
-
-
 			};
 			_context.Users.Add(user);
 			await _context.SaveChangesAsync();
