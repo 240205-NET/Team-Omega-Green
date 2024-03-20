@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
+
 import {BehaviorSubject, map, Observable} from "rxjs";
 
 import axios from 'axios';
@@ -190,8 +191,8 @@ export class AccountService {
     });
   }
 
-  updateUserByIdAxios(id : string, params : any) {
-    axios.put(this.loginUrl + `/user/${id}`, {
+  updateUserByIdAxios(id : string, params : any){
+    axios.put("https://omega-green.azurewebsites.net/api" + `/users/${id}`, {
       username: params.username,
       password: params.password,
       firstName: params.firstName,
@@ -201,10 +202,13 @@ export class AccountService {
     .then((response) => {
       // Response handling may change after testing with mock data and/or database
       console.log(response);
-      return response.status;
+      localStorage.setItem('user', JSON.stringify(response.data));
+      this.userSubject.next(response.data as User);
+      return response.data;
     }, (error) => {
       console.log(error);
     });
+  
   }
 
   deleteUserByIdAxios(id : string) {
@@ -220,5 +224,21 @@ export class AccountService {
     }, (error) => {
       console.log(error);
     })
+  }
+
+  updateUser(userId : string, params : any) {
+    params['userId'] = this.userValue?.userId;
+    console.log(params)
+    console.log("https://omega-green.azurewebsites.net/api" + '/users/' + userId)
+    // return this.http.put<any>("https://omega-green.azurewebsites.net/api" + '/users/' + userId, {userId:userId}).pipe(map(x => {
+    //   if(userId == this.userValue?.userId) {
+    //     let user = {...this.userValue,...params};
+    //     localStorage.setItem('user', JSON.stringify(user));
+    //     this.userSubject.next(user);
+    //   }
+    //   return x;
+    // }));
+    return this.http.put<any>('https://omega-green.azurewebsites.net/api/users/16', {params});
+
   }
 }

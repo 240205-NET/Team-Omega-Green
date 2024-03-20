@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+
 import axios from 'axios';
 
 
 import { Book } from '../_models/book.model';
+import { BehaviorSubject, Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +13,20 @@ import { Book } from '../_models/book.model';
 export class BookService {
 
   public bookUrl : string;
+  public wishlist : Observable<Book[]>;
+  private wishlistSubject: BehaviorSubject<Book[]>;
 
   constructor (
     // private router : Router;
+
   )
   {
     this.bookUrl = 'https://omega-green.azurewebsites.net/api';
     //this.bookUrl = 'https://6cbff109-9d1e-4268-83f0-e763975c271d.mock.pstmn.io'
+    let tempBookArray : Book[] = [] 
+    localStorage.setItem('wishlist', JSON.stringify(tempBookArray));
+    this.wishlistSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('wishlist')!));
+    this.wishlist = this.wishlistSubject.asObservable();
   }
 
   async getAllBooksAsync() : Promise<Book[]> {
@@ -159,6 +168,23 @@ export class BookService {
       console.log(error);
       return false;
     }
+  }
+
+  addBookToWishlist(book: Book) {
+    let bookArray  = JSON.parse(localStorage.getItem('wishlist')!) as Book[];
+    let book2 : Book = {
+      title: "randomnames",
+      author: "randomguy",
+      isbn: "112432423",
+      categoryName: "surprise",
+    }
+    console.log(bookArray)
+    bookArray.push(book2);
+    console.log(JSON.stringify(bookArray))
+    localStorage.setItem('wishlist', JSON.stringify(bookArray));
+    
+    // bookArray.
+    // localStorage.setItem('wishlist', JSON.)
   }
 
 }

@@ -9,20 +9,12 @@ import { User } from '../_models/user.model';
   templateUrl: './listuser.component.html'
 })
 export class ListUserComponent implements OnInit{
-  user? : User;
+  user? : User | null;
 
   
   
   constructor(private router: Router, private accntSrvice: AccountService) {
-    this.user = {
-      id: "1",
-      firstName: "Stephen",
-      lastName: "Sams",
-      username : "ssams01",
-      password : "str@ngpa55word",
-      email : "madeup@email.com",
-      token : ""
-    };
+     this.user = this.accntSrvice.userValue;
   }
 
   //
@@ -34,7 +26,7 @@ export class ListUserComponent implements OnInit{
 
   //if doesn't work use routerLink!
   EditUserInfo() {
-    this.router.navigate(['edit/:id']);
+    this.router.navigate(['users/edit/:id']);
   }
 
 }
