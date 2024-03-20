@@ -1,0 +1,14 @@
+.form-inline{
+display: block;
+width: 50vw;
+padding-left: 10px;
+}
+
+.form-control{
+    width: 40vw;
+
+    }
+
+    button{
+        color: white;
+    }
