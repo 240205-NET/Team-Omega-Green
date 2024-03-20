@@ -53,7 +53,7 @@ namespace Lit.Server.Api
 			return Ok(userDto); // Wrap the response in Ok()
 
 		}
-		[HttpPost("/login")]
+		[HttpPost("login")]
 		public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
 		{
 			var user = await _context.Users.SingleOrDefaultAsync(user => user.Username == loginDto.Username);
