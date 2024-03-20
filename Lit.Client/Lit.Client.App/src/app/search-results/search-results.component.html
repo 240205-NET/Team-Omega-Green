@@ -8,12 +8,12 @@
     <table id="resultsTable">
         <tbody>
             <tr *ngFor="let book of filteredBooks" style="width: 100vw">
-                <td class="resultsCell" (click)="goToBookDetail(book.isbn)">
+                <a style=" color: inherit; text-decoration: none;" [routerLink]="['/book-detail/', book.isbn]">  <td class="resultsCell">
                     <h2>{{ book.title }}</h2>
                     <p>Author: {{ book.author }}</p>
                     <p>ISBN: {{ book.isbn }}</p>
                     <hr>
-                </td>
+                </td></a>
             </tr>
         </tbody>
     </table>

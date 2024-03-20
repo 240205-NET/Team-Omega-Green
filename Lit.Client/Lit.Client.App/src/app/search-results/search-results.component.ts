@@ -60,10 +60,7 @@ export class SearchResultsComponent implements OnInit {
     );
   }
   
-  goToBookDetail(bookID:string){
 
-    console.log(bookID);
-  }
 }
 
 
