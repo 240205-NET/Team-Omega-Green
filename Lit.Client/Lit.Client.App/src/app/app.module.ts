@@ -21,6 +21,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {fakeBackendProvider} from "./_interceptors/fake-backend";
 import {JwtInterceptor} from "./_interceptors/jwt.interceptor";
 import { BookDetailComponent } from './book-detail/book-detail.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
     HomeComponent,
     BooklistComponent,
     SearchResultsComponent,
-    BookDetailComponent
+    BookDetailComponent,
+    WishlistComponent
   ],
   imports: [
     BrowserModule,
