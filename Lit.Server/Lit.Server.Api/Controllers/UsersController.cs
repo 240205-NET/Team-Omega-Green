@@ -65,6 +65,8 @@ public class UsersController : ControllerBase
 	}
 
 
+
+
 	[HttpPut("{UserId}")]
 	public async Task<IActionResult> EditUser(int UserId, [FromBody] UserDto userDto)
 	{
@@ -95,7 +97,7 @@ public class UsersController : ControllerBase
 		}
 		catch (DbUpdateConcurrencyException)
 		{
-			if (!_context.Users.Any(user => user.UserId == UserId))
+			if (!_context.Users.Any(u => u.UserId == UserId))
 			{
 				return NotFound();
 			}
@@ -104,7 +106,19 @@ public class UsersController : ControllerBase
 				throw;
 			}
 		}
-		return NoContent();
+
+		// Prepare the updated user data for response
+		var updatedUserDto = new UserDto
+		{
+			UserId = user.UserId,
+			Username = user.Username,
+			Email = user.Email,
+			FirstName = user.FirstName,
+			LastName = user.LastName,
+			// Include other properties as necessary
+		};
+
+		return Ok(updatedUserDto); // Return the updated user
 	}
 
 	// DELETE: api/users/5
