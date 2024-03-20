@@ -6,8 +6,8 @@ name: Build and deploy ASP.Net Core app to Azure Web App - omega-green
 on:
   push:
     branches:
+      - main
       - feat-auth
-      # TODO - main
   workflow_dispatch:
 env:
   WORKING_DIR: Lit.Server/Lit.Server.Api # where our ASP.NET app lives
